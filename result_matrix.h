@@ -1,8 +1,9 @@
 #ifndef RESULTMATRIZ_H
 #define RESULTMATRIZ_H
 #include "matrix_2d.h"
+#include "interfaces.h"
 
-class ResultMatrix{
+class ResultMatrix : virtual public Graphicable{
 public:
     ResultMatrix (unsigned int sizeKeyHypothesis, unsigned int sizeTrace);
     
@@ -24,6 +25,8 @@ public:
      * @return Size of the trace set as specified at constructor. 
      */
     unsigned int getSizeTraceSet ();
+    
+    int toPng (char *fileName, list<string> *gnuplotCmds = NULL);
     
 protected:
     unsigned int keySize;

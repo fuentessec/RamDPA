@@ -7,6 +7,8 @@
  * 
  * 
  */
+#ifndef INTERFACES_H
+#define INTERFACES_H
 #include <list>
 #include <string>
 #include <stdio.h>
@@ -61,3 +63,4 @@ class FileStorage {
    */
   virtual int fromDisk (FILE *fd) = 0; // stores the object in the file descriptor.
 };
+#endif

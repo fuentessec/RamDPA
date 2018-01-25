@@ -139,6 +139,10 @@ int main() {
 
         uint8_t key = *aes.getKeySet()->getElem(keyPos);
         cout << "\032[1;31mkey(" << i << ") = " << (int) key << " corr = " << valuePos << "\032[0m" << endl;
+        
+        
+        
+        res->toPng("correlation.png");
     }
     return 0;
 }
