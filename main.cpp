@@ -149,7 +149,7 @@ int main() {
         // Check memory usage...
         double vm, rss;
         process_mem_usage(vm, rss);
-        printf("VM: %f; RSS: %f; Total: \n", vm, rss, vm+rss);
+        printf("VM: %f; RSS: %f; Total: %f\n", vm, rss, vm+rss);
         
         int keyPos, tracePos;
         double valuePos = res->getMaxValue(keyPos, tracePos);
