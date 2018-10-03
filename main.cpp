@@ -99,7 +99,18 @@ int main(int argc, char *argv[]) {
     printf("read traces from file\n");
     begin = get_timestamp();
     for (int i = 0; i < NUM_TRACES; i++) {
-        Trace *aux = new Trace8(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+        Trace *aux;
+        switch (tracePrecision){
+            case 1:
+                aux = new Trace8(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+                break;
+            case 2:
+                aux = new Trace16(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+                break;
+            default:
+                aux = new Trace32(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+        }
+    
         for (int j = 0; j < TRACE_SIZE; j++) {
             uint16_t value;
             tracesFile >> value;
@@ -175,7 +186,7 @@ int main(int argc, char *argv[]) {
 
         // calculate correlation coefficient (check double simple precision).
         printf("calculating correlation coefficient\n");
-        CorrelationCoefficient corr = CorrelationCoefficient(matrix, &traceSet);
+        CorrelationCoefficient corr = CorrelationCoefficient(matrix, &traceSet, floatPrecision == 2);
         begin = get_timestamp();
         ResultMatrix* res = corr.doStatisticalAnalysis();
         diff = double(get_timestamp() - begin) / 1000000.;
