@@ -75,11 +75,11 @@ int main(int argc, char *argv[]) {
     
     /// read arguments
     if (argc != 4){
-        printf ("Usage: main NumThreds TraceElementPrecision floatPrecision");
-        printf ("Numthreads = number of threads for parallel calculations");
-        printf ("TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits");
-        printf ("floatPrecision = 1->float(32-bits), 2->double(64bits)");
-        printf ("NOTE: program does not do input validation (put correct values)");
+        printf ("Usage: doctorado NumThreds TraceElementPrecision floatPrecision\n");
+        printf ("Numthreads = number of threads for parallel calculations\n");
+        printf ("TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits\n");
+        printf ("floatPrecision = 1->float(32-bits), 2->double(64bits)\n\n");
+        printf ("NOTE: program does not do input validation (put correct values)\n");
         return -1;
     }
     
@@ -209,6 +209,9 @@ int main(int argc, char *argv[]) {
         
         res->toPng("correlation.png");
     }
+        
+    printf("Total Intermediate: %f;\n TimeConsumptionMatrix: %f;\n TimeCorrelation: %f\n", 
+            timeIntermediate, timeConsumptionMatrix, timeCorrelation);
     
     return 0;
 }
