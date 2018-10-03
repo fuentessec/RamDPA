@@ -59,8 +59,10 @@ int main() {
     ifstream tracesFile("./traces/tracesRawIntPrint.txt");
 
     // read traces from file and create traceSet
+    printf("read traces from file\n");
+    begin = get_timestamp();
     for (int i = 0; i < NUM_TRACES; i++) {
-        Trace *aux = new Trace16(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+        Trace *aux = new Trace8(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
         for (int j = 0; j < TRACE_SIZE; j++) {
             uint16_t value;
             tracesFile >> value;
@@ -68,6 +70,8 @@ int main() {
         }
         traceSet.addTrace(aux);
     }
+    diff = double(get_timestamp() - begin) / 1000000.;
+    printf("Time -> %f\n", diff);
 
     /// PRINT TRACE INFO.
     //    ts1.getNTrace(0)->toPng("traceCHES2016.png");
@@ -80,9 +84,12 @@ int main() {
     //    variance->toPng("tracesCHES16var.png");
 
     // change traceset to statistical mode
+    printf("change traceset to statistical mode\n");
+    begin = get_timestamp();
     traceSet.statMode();
-
-
+    diff = double(get_timestamp() - begin) / 1000000.;
+    printf("Time -> %f\n", diff);
+    
     // create data set
     InputDataSet dataSet = InputDataSet(DATA_SIZE);
 
@@ -103,6 +110,10 @@ int main() {
         dataSet.insertData(input);
     }
 
+    // variables for time spent in each DPA step to obtain complete key
+    double timeIntermediate = 0;
+    double timeConsumptionMatrix = 0;
+    double timeCorrelation = 0;
     for (int i = 0; i < KEY_SIZE; i++) {
         // optimize first byte of each input data.
         dataSet.doCacheOptimization(i, 1);
@@ -113,22 +124,25 @@ int main() {
         begin = get_timestamp();
         IntermediateMatrix* intermediate = aes.doCryptoComputation();
         diff = double(get_timestamp() - begin) / 1000000.;
+        timeIntermediate += diff;
         printf("Time -> %f\n", diff);
 
         // get consumption matrix
         printf("calculating consumption matrix\n");
-        begin = get_timestamp();
         HWPowerModel powerModel = HWPowerModel(intermediate, PowerModel::RES_8_BITS);
+        begin = get_timestamp();
         ConsumptionMatrix *matrix = powerModel.doPowerModel();
         diff = double(get_timestamp() - begin) / 1000000.;
+        timeConsumptionMatrix += diff;
         printf("Time -> %f\n", diff);
 
-        // calculate correlation coefficient
+        // calculate correlation coefficient (check double simple precision).
         printf("calculating correlation coefficient\n");
-        begin = get_timestamp();
         CorrelationCoefficient corr = CorrelationCoefficient(matrix, &traceSet);
+        begin = get_timestamp();
         ResultMatrix* res = corr.doStatisticalAnalysis();
         diff = double(get_timestamp() - begin) / 1000000.;
+        timeCorrelation += diff;
         printf("Time -> %f\n", diff);
 
 
@@ -139,8 +153,6 @@ int main() {
 
         uint8_t key = *aes.getKeySet()->getElem(keyPos);
         cout << "\032[1;31mkey(" << i << ") = " << (int) key << " corr = " << valuePos << "\032[0m" << endl;
-        
-        
         
         res->toPng("correlation.png");
     }
