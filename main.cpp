@@ -88,6 +88,27 @@ int main(int argc, char *argv[]) {
     int tracePrecision = atoi (argv[2]);
     int floatPrecision = atoi (argv[3]);
     
+    // print configuration
+    printf ("---- Configuration ----");
+    printf ("Threads = %s\n", argv[1]);
+    switch (tracePrecision){
+        case 1:
+            printf ("TracePrecision = 8-bits\n");
+            break;
+        case 2: 
+            printf ("TracePrecision = 16-bits\n");
+            break;
+        default:
+            printf ("TracePrecision = 32-bits\n");
+    }
+    switch (floatPrecision){
+        case 1:
+            printf ("FloatPrecision = float\n");
+            break;
+        default:
+            printf ("FloatPrecision = double\n");
+    }
+
 
     TraceSet traceSet = TraceSet();
     Trace *aux;
