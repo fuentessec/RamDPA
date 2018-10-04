@@ -229,9 +229,12 @@ int main(int argc, char *argv[]) {
         cout << "\032[1;31mkey(" << i << ") = " << (int) key << " corr = " << valuePos << "\032[0m" << endl;
         
         res->toPng("correlation.png");
+        delete intermediate;
+        delete matrix;
+        delete res;
     }
         
-    printf("Total Intermediate: %f;\n TimeConsumptionMatrix: %f;\n TimeCorrelation: %f\n", 
+    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f\n", 
             timeIntermediate, timeConsumptionMatrix, timeCorrelation);
     
     return 0;
