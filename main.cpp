@@ -42,15 +42,73 @@
 typedef unsigned long long timestamp_t;
 using namespace std;
 
+void process_mem_usage(double& vm_usage, double& resident_set)
+{
+    vm_usage     = 0.0;
+    resident_set = 0.0;
+
+    // the two fields we want
+    unsigned long vsize;
+    long rss;
+    {
+        std::string ignore;
+        std::ifstream ifs("/proc/self/stat", std::ios_base::in);
+        ifs >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore
+                >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore >> ignore
+                >> ignore >> ignore >> vsize >> rss;
+    }
+
+    long page_size_kb = sysconf(_SC_PAGE_SIZE) / 1024; // in case x86-64 is configured to use 2MB pages
+    vm_usage = vsize / 1024.0;
+    resident_set = rss * page_size_kb;
+}
+
 static timestamp_t get_timestamp() {
     struct timeval now;
     gettimeofday(&now, NULL);
     return now.tv_usec + (timestamp_t) now.tv_sec * 1000000;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     timestamp_t begin;
     double diff;
+    
+    /// read arguments
+    if (argc != 4){
+        printf ("Usage: doctorado NumThreds TraceElementPrecision floatPrecision\n");
+        printf ("Numthreads = number of threads for parallel calculations\n");
+        printf ("TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits\n");
+        printf ("floatPrecision = 1->float(32-bits), 2->double(64bits)\n\n");
+        printf ("NOTE: program does not do input validation (put correct values)\n");
+        return -1;
+    }
+    
+    /// set values given as arguments
+    setenv("NTHREADS", argv[1],1);
+    int tracePrecision = atoi (argv[2]);
+    int floatPrecision = atoi (argv[3]);
+    
+    // print configuration
+    printf ("---- Configuration ----");
+    printf ("Threads = %s\n", argv[1]);
+    switch (tracePrecision){
+        case 1:
+            printf ("TracePrecision = 8-bits\n");
+            break;
+        case 2: 
+            printf ("TracePrecision = 16-bits\n");
+            break;
+        default:
+            printf ("TracePrecision = 32-bits\n");
+    }
+    switch (floatPrecision){
+        case 1:
+            printf ("FloatPrecision = float\n");
+            break;
+        default:
+            printf ("FloatPrecision = double\n");
+    }
+
 
     TraceSet traceSet = TraceSet();
     Trace *aux;
@@ -59,8 +117,21 @@ int main() {
     ifstream tracesFile("./traces/tracesRawIntPrint.txt");
 
     // read traces from file and create traceSet
+    printf("read traces from file\n");
+    begin = get_timestamp();
     for (int i = 0; i < NUM_TRACES; i++) {
-        Trace *aux = new Trace16(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+        Trace *aux;
+        switch (tracePrecision){
+            case 1:
+                aux = new Trace8(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+                break;
+            case 2:
+                aux = new Trace16(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+                break;
+            default:
+                aux = new Trace32(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
+        }
+    
         for (int j = 0; j < TRACE_SIZE; j++) {
             uint16_t value;
             tracesFile >> value;
@@ -68,6 +139,8 @@ int main() {
         }
         traceSet.addTrace(aux);
     }
+    diff = double(get_timestamp() - begin) / 1000000.;
+    printf("Time -> %f\n", diff);
 
     /// PRINT TRACE INFO.
     //    ts1.getNTrace(0)->toPng("traceCHES2016.png");
@@ -80,9 +153,12 @@ int main() {
     //    variance->toPng("tracesCHES16var.png");
 
     // change traceset to statistical mode
+    printf("change traceset to statistical mode\n");
+    begin = get_timestamp();
     traceSet.statMode();
-
-
+    diff = double(get_timestamp() - begin) / 1000000.;
+    printf("Time -> %f\n", diff);
+    
     // create data set
     InputDataSet dataSet = InputDataSet(DATA_SIZE);
 
@@ -103,6 +179,10 @@ int main() {
         dataSet.insertData(input);
     }
 
+    // variables for time spent in each DPA step to obtain complete key
+    double timeIntermediate = 0;
+    double timeConsumptionMatrix = 0;
+    double timeCorrelation = 0;
     for (int i = 0; i < KEY_SIZE; i++) {
         // optimize first byte of each input data.
         dataSet.doCacheOptimization(i, 1);
@@ -113,25 +193,33 @@ int main() {
         begin = get_timestamp();
         IntermediateMatrix* intermediate = aes.doCryptoComputation();
         diff = double(get_timestamp() - begin) / 1000000.;
+        timeIntermediate += diff;
         printf("Time -> %f\n", diff);
 
         // get consumption matrix
         printf("calculating consumption matrix\n");
-        begin = get_timestamp();
         HWPowerModel powerModel = HWPowerModel(intermediate, PowerModel::RES_8_BITS);
+        begin = get_timestamp();
         ConsumptionMatrix *matrix = powerModel.doPowerModel();
         diff = double(get_timestamp() - begin) / 1000000.;
+        timeConsumptionMatrix += diff;
         printf("Time -> %f\n", diff);
 
-        // calculate correlation coefficient
+        // calculate correlation coefficient (check double simple precision).
         printf("calculating correlation coefficient\n");
+        CorrelationCoefficient corr = CorrelationCoefficient(matrix, &traceSet, floatPrecision == 2);
         begin = get_timestamp();
-        CorrelationCoefficient corr = CorrelationCoefficient(matrix, &traceSet);
         ResultMatrix* res = corr.doStatisticalAnalysis();
         diff = double(get_timestamp() - begin) / 1000000.;
+        timeCorrelation += diff;
         printf("Time -> %f\n", diff);
 
 
+        // Check memory usage...
+        double vm, rss;
+        process_mem_usage(vm, rss);
+        printf("VM: %f; RSS: %f; Total: %f\n", vm, rss, vm+rss);
+        
         int keyPos, tracePos;
         double valuePos = res->getMaxValue(keyPos, tracePos);
 
@@ -140,9 +228,14 @@ int main() {
         uint8_t key = *aes.getKeySet()->getElem(keyPos);
         cout << "\032[1;31mkey(" << i << ") = " << (int) key << " corr = " << valuePos << "\032[0m" << endl;
         
-        
-        
         res->toPng("correlation.png");
+        delete intermediate;
+        delete matrix;
+        delete res;
     }
+        
+    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f\n", 
+            timeIntermediate, timeConsumptionMatrix, timeCorrelation);
+    
     return 0;
 }
