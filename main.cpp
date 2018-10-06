@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    AlignSumTraceSet traceSet = AlignSumTraceSet(100);
+    AlignMatchSqrTraceSet traceSet = AlignMatchSqrTraceSet(200, 20, 10);
     Trace *aux;
 
     // open traces file

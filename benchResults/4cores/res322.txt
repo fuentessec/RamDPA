@@ -1,0 +1,154 @@
+---- Configuration ----Threads = 3
+TracePrecision = 16-bits
+FloatPrecision = double
+read traces from file
+Time -> 0.488764
+change traceset to statistical mode
+Time -> 0.108970
+calculating intermediate values
+Time -> 0.000619
+calculating consumption matrix
+threads 3
+Time -> 0.001026
+calculating correlation coefficient
+Time -> 8.388048
+VM: 277760.000000; RSS: 64204.000000; Total: 341964.000000
+[1;31mkey(0) = 152 corr = 0.863093[0m
+calculating intermediate values
+Time -> 0.000599
+calculating consumption matrix
+threads 3
+Time -> 0.000887
+calculating correlation coefficient
+Time -> 8.302185
+VM: 277808.000000; RSS: 64124.000000; Total: 341932.000000
+[1;31mkey(1) = 169 corr = 0.786383[0m
+calculating intermediate values
+Time -> 0.000630
+calculating consumption matrix
+threads 3
+Time -> 0.000951
+calculating correlation coefficient
+Time -> 8.310735
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(2) = 10 corr = 0.808071[0m
+calculating intermediate values
+Time -> 0.000583
+calculating consumption matrix
+threads 3
+Time -> 0.000979
+calculating correlation coefficient
+Time -> 8.306153
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(3) = 198 corr = 0.820335[0m
+calculating intermediate values
+Time -> 0.000592
+calculating consumption matrix
+threads 3
+Time -> 0.000897
+calculating correlation coefficient
+Time -> 8.338774
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(4) = 162 corr = 0.797991[0m
+calculating intermediate values
+Time -> 0.000591
+calculating consumption matrix
+threads 3
+Time -> 0.000913
+calculating correlation coefficient
+Time -> 8.271308
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(5) = 188 corr = 0.858354[0m
+calculating intermediate values
+Time -> 0.000632
+calculating consumption matrix
+threads 3
+Time -> 0.000968
+calculating correlation coefficient
+Time -> 8.436599
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(6) = 38 corr = 0.764689[0m
+calculating intermediate values
+Time -> 0.000593
+calculating consumption matrix
+threads 3
+Time -> 0.000932
+calculating correlation coefficient
+Time -> 8.288802
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(7) = 73 corr = 0.799169[0m
+calculating intermediate values
+Time -> 0.000618
+calculating consumption matrix
+threads 3
+Time -> 0.000955
+calculating correlation coefficient
+Time -> 8.276335
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(8) = 60 corr = 0.809707[0m
+calculating intermediate values
+Time -> 0.000591
+calculating consumption matrix
+threads 3
+Time -> 0.000952
+calculating correlation coefficient
+Time -> 8.268407
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(9) = 59 corr = 0.832336[0m
+calculating intermediate values
+Time -> 0.000589
+calculating consumption matrix
+threads 3
+Time -> 0.000948
+calculating correlation coefficient
+Time -> 8.362581
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(10) = 224 corr = 0.797688[0m
+calculating intermediate values
+Time -> 0.000591
+calculating consumption matrix
+threads 3
+Time -> 0.000978
+calculating correlation coefficient
+Time -> 8.299109
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(11) = 75 corr = 0.838898[0m
+calculating intermediate values
+Time -> 0.000591
+calculating consumption matrix
+threads 3
+Time -> 0.000963
+calculating correlation coefficient
+Time -> 8.303717
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(12) = 17 corr = 0.816927[0m
+calculating intermediate values
+Time -> 0.000619
+calculating consumption matrix
+threads 3
+Time -> 0.000918
+calculating correlation coefficient
+Time -> 8.319782
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(13) = 53 corr = 0.821615[0m
+calculating intermediate values
+Time -> 0.000589
+calculating consumption matrix
+threads 3
+Time -> 0.001007
+calculating correlation coefficient
+Time -> 8.388684
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(14) = 85 corr = 0.770559[0m
+calculating intermediate values
+Time -> 0.000591
+calculating consumption matrix
+threads 3
+Time -> 0.000973
+calculating correlation coefficient
+Time -> 8.317521
+VM: 277808.000000; RSS: 64352.000000; Total: 342160.000000
+[1;31mkey(15) = 212 corr = 0.80714[0m
+Total Intermediate: 0.009618;
+TimeConsumptionMatrix: 0.015247;
+TimeCorrelation: 133.178740
