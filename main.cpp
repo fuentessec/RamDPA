@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    TraceSet traceSet = TraceSet();
+    AlignSumTraceSet traceSet = AlignSumTraceSet(100);
     Trace *aux;
 
     // open traces file
@@ -152,6 +152,14 @@ int main(int argc, char *argv[]) {
     //    mean->toPng("tracesCHES16mean.png");
     //    variance->toPng("tracesCHES16var.png");
 
+    // align traces
+    printf("align traces\n");
+    begin = get_timestamp();
+    traceSet.preProcess();
+    diff = double(get_timestamp() - begin) / 1000000.;
+    printf("Time -> %f\n", diff);
+    double timeAlign = diff;
+    
     // change traceset to statistical mode
     printf("change traceset to statistical mode\n");
     begin = get_timestamp();
@@ -234,8 +242,8 @@ int main(int argc, char *argv[]) {
         delete res;
     }
         
-    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f\n", 
-            timeIntermediate, timeConsumptionMatrix, timeCorrelation);
+    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f;\nTimeAlign: %f\n", 
+            timeIntermediate, timeConsumptionMatrix, timeCorrelation, timeAlign);
     
     return 0;
 }
