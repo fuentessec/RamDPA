@@ -21,9 +21,9 @@ double ResultMatrix::getMaxValue(int &keyPos, int &tracePos) {
 
     for (int k = 0; k < keySize; k++) {
         for (int t = 0; t < traceSize; t++) {
-
-            if (getResult(k, t) > maxValue) {
-                maxValue = getResult(k, t);
+            double res = getResult(k, t);
+            if (res > maxValue) {
+                maxValue = res;
                 keyPos = k;
                 tracePos = t;
             }
