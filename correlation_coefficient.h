@@ -10,6 +10,8 @@ public:
         bool doublePrecision = true);
         
 protected:
+    vector <double> traceMeans;
+    vector <double> consumptionMeans;
     void calculate (int keyHypothesisPos, int tracePos);
 };
 
