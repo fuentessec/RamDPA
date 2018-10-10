@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    AlignMatchSqrTraceSet traceSet = AlignMatchSqrTraceSet(200, 20, 10);
+    TraceSet traceSet = TraceSet();
     Trace *aux;
 
     // open traces file
@@ -151,14 +151,6 @@ int main(int argc, char *argv[]) {
     //    StatTrace *variance = ts1.varianceTraces (mean);
     //    mean->toPng("tracesCHES16mean.png");
     //    variance->toPng("tracesCHES16var.png");
-
-    // align traces
-    printf("align traces\n");
-    begin = get_timestamp();
-    traceSet.preProcess();
-    diff = double(get_timestamp() - begin) / 1000000.;
-    printf("Time -> %f\n", diff);
-    double timeAlign = diff;
     
     // change traceset to statistical mode
     printf("change traceset to statistical mode\n");
@@ -242,8 +234,8 @@ int main(int argc, char *argv[]) {
         delete res;
     }
         
-    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f;\nTimeAlign: %f\n", 
-            timeIntermediate, timeConsumptionMatrix, timeCorrelation, timeAlign);
+    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f;\n", 
+            timeIntermediate, timeConsumptionMatrix, timeCorrelation);
     
     return 0;
 }
