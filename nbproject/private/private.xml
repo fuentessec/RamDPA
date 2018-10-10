@@ -7,21 +7,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/correlation_coefficient.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/time_slice.h</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/trace_set.h</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/result_matrix.h</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/statistical_analysis.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/trace_set.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/matrix_2d.h</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/aes_sub_bytes_output.h</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/consuption_matrix.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/result_matrix.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/consumption_matrix.h</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/main.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/matrix_2d.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/trace.cpp</file>
-            <file>file:/mnt/Datos/NetBeansProjects/DoctoradoFinal/Doctorado/time_slice.cpp</file>
+            <file>file:/home/alberto/Temp/DoctoradoFinal/Doctorado/statistical_analysis.cpp</file>
+            <file>file:/home/alberto/Temp/DoctoradoFinal/Doctorado/main.cpp</file>
+            <file>file:/home/alberto/Temp/DoctoradoFinal/Doctorado/correlation_coefficient.cpp</file>
         </group>
     </open-files>
 </project-private>
