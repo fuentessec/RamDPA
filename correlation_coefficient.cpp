@@ -84,6 +84,5 @@ void CorrelationCoefficient::calculate(int keyHypothesisPos, int tracePos) {
      */
 
     /// set absolute value of correlation
-
-    //this->res->setResult(corr, keyHypothesisPos, tracePos);
+    this->res->setResult(corr, keyHypothesisPos, tracePos);
 }
