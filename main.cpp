@@ -182,8 +182,8 @@ int main(int argc, char *argv[]) {
     double timeIntermediate = 0;
     double timeConsumptionMatrix = 0;
     double timeCorrelation = 0;
-    for (int i = 0; i < 1; i++) {
-        // for (int i = 0; i < KEY_SIZE; i++) {
+
+    for (int i = 0; i < KEY_SIZE; i++) {
         // optimize first byte of each input data.
         dataSet.doCacheOptimization(i, 1);
 
