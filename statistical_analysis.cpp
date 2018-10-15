@@ -59,8 +59,8 @@ ResultMatrix* StatisticalAnalysis::doStatisticalAnalysis (){
 }
 
 void StatisticalAnalysis::threadCalculation(int totalThreads, int numThread) { 
-    for (int k = numThread; k < keySize; k+=totalThreads) {
-        for (int t = 0; t < traceSize; t++) { 
+        for (int t = 0; t < traceSize; t+=totalThreads) { 
+            for (int k = numThread; k < keySize; k++) {
             calculate(k, t);
         }
     }
