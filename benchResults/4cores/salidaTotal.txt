@@ -1,0 +1,154 @@
+ Performance counter stats for './doctorado 1 1 2':
+
+     188532,363772      task-clock (msec)         #    1,000 CPUs utilized          
+   787.465.444.516      cycles                    #    4,177 GHz                    
+ 1.987.536.916.170      instructions              #    2,52  insn per cycle         
+     1.139.767.306      cache-references          #    6,045 M/sec                  
+        49.212.850      cache-misses              #    4,318 % of all cache refs    
+
+     188,457205753 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 1 2 2':
+
+     189633,609831      task-clock (msec)         #    1,000 CPUs utilized          
+   791.906.321.474      cycles                    #    4,176 GHz                    
+ 1.987.602.586.276      instructions              #    2,51  insn per cycle         
+     1.139.318.550      cache-references          #    6,008 M/sec                  
+        65.677.940      cache-misses              #    5,765 % of all cache refs    
+
+     189,568663338 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 1 3 2':
+
+     189703,617083      task-clock (msec)         #    1,000 CPUs utilized          
+   792.487.417.276      cycles                    #    4,178 GHz                    
+ 1.987.679.043.123      instructions              #    2,51  insn per cycle         
+     1.399.280.107      cache-references          #    7,376 M/sec                  
+        81.697.884      cache-misses              #    5,839 % of all cache refs    
+
+     189,615742043 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 2 1 2':
+
+     193238,635008      task-clock (msec)         #    1,961 CPUs utilized          
+   791.284.348.393      cycles                    #    4,095 GHz                    
+ 1.987.427.465.747      instructions              #    2,51  insn per cycle         
+     1.240.743.363      cache-references          #    6,421 M/sec                  
+        49.009.946      cache-misses              #    3,950 % of all cache refs    
+
+      98,542645037 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 2 2 2':
+
+     194496,405512      task-clock (msec)         #    1,957 CPUs utilized          
+   795.913.642.674      cycles                    #    4,092 GHz                    
+ 1.987.480.478.895      instructions              #    2,50  insn per cycle         
+     1.152.674.417      cache-references          #    5,926 M/sec                  
+        60.969.121      cache-misses              #    5,289 % of all cache refs    
+
+      99,388815867 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 2 3 2':
+
+     192042,279185      task-clock (msec)         #    1,972 CPUs utilized          
+   785.900.319.161      cycles                    #    4,092 GHz                    
+ 1.987.560.115.051      instructions              #    2,53  insn per cycle         
+     1.269.325.618      cache-references          #    6,610 M/sec                  
+        81.443.457      cache-misses              #    6,416 % of all cache refs    
+
+      97,395421467 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 3 1 2':
+
+     193515,634317      task-clock (msec)         #    2,899 CPUs utilized          
+   788.550.123.364      cycles                    #    4,075 GHz                    
+ 1.987.396.599.473      instructions              #    2,52  insn per cycle         
+     1.097.475.492      cache-references          #    5,671 M/sec                  
+        48.729.306      cache-misses              #    4,440 % of all cache refs    
+
+      66,743488256 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 3 2 2':
+
+     194416,999888      task-clock (msec)         #    2,887 CPUs utilized          
+   792.066.478.908      cycles                    #    4,074 GHz                    
+ 1.987.445.955.508      instructions              #    2,51  insn per cycle         
+     1.262.239.892      cache-references          #    6,492 M/sec                  
+        60.337.176      cache-misses              #    4,780 % of all cache refs    
+
+      67,330610016 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 3 3 2':
+
+     192788,378255      task-clock (msec)         #    2,913 CPUs utilized          
+   786.597.998.645      cycles                    #    4,080 GHz                    
+ 1.987.524.883.588      instructions              #    2,53  insn per cycle         
+     1.238.226.084      cache-references          #    6,423 M/sec                  
+        81.406.093      cache-misses              #    6,574 % of all cache refs    
+
+      66,186743279 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 4 1 2':
+
+     198285,146212      task-clock (msec)         #    3,804 CPUs utilized          
+   793.651.141.414      cycles                    #    4,003 GHz                    
+ 1.987.380.259.799      instructions              #    2,50  insn per cycle         
+     1.234.256.879      cache-references          #    6,225 M/sec                  
+        51.551.259      cache-misses              #    4,177 % of all cache refs    
+
+      52,127179312 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 4 2 2':
+
+     196947,742697      task-clock (msec)         #    3,836 CPUs utilized          
+   788.250.641.951      cycles                    #    4,002 GHz                    
+ 1.987.428.131.526      instructions              #    2,52  insn per cycle         
+     1.191.247.406      cache-references          #    6,049 M/sec                  
+        61.429.734      cache-misses              #    5,157 % of all cache refs    
+
+      51,343431331 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 4 3 2':
+
+     197759,472035      task-clock (msec)         #    3,799 CPUs utilized          
+   791.753.241.419      cycles                    #    4,004 GHz                    
+ 1.987.503.503.478      instructions              #    2,51  insn per cycle         
+     1.296.772.017      cache-references          #    6,557 M/sec                  
+        82.603.489      cache-misses              #    6,370 % of all cache refs    
+
+      52,061556801 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 4 2 1':
+
+     197968,736105      task-clock (msec)         #    3,786 CPUs utilized          
+   792.535.996.295      cycles                    #    4,003 GHz                    
+ 1.989.985.476.468      instructions              #    2,51  insn per cycle         
+     1.264.654.613      cache-references          #    6,388 M/sec                  
+        43.964.181      cache-misses              #    3,476 % of all cache refs    
+
+      52,284840221 seconds time elapsed
+
+
+ Performance counter stats for './doctorado 4 2 2':
+
+     197374,440265      task-clock (msec)         #    3,818 CPUs utilized          
+   790.118.307.174      cycles                    #    4,003 GHz                    
+ 1.987.421.313.531      instructions              #    2,52  insn per cycle         
+     1.293.360.988      cache-references          #    6,553 M/sec                  
+        60.990.262      cache-misses              #    4,716 % of all cache refs    
+
+      51,702011776 seconds time elapsed
+
+

@@ -42,9 +42,8 @@
 typedef unsigned long long timestamp_t;
 using namespace std;
 
-void process_mem_usage(double& vm_usage, double& resident_set)
-{
-    vm_usage     = 0.0;
+void process_mem_usage(double& vm_usage, double& resident_set) {
+    vm_usage = 0.0;
     resident_set = 0.0;
 
     // the two fields we want
@@ -72,45 +71,45 @@ static timestamp_t get_timestamp() {
 int main(int argc, char *argv[]) {
     timestamp_t begin;
     double diff;
-    
+
     /// read arguments
-    if (argc != 4){
-        printf ("Usage: doctorado NumThreds TraceElementPrecision floatPrecision\n");
-        printf ("Numthreads = number of threads for parallel calculations\n");
-        printf ("TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits\n");
-        printf ("floatPrecision = 1->float(32-bits), 2->double(64bits)\n\n");
-        printf ("NOTE: program does not do input validation (put correct values)\n");
+    if (argc != 4) {
+        printf("Usage: doctorado NumThreds TraceElementPrecision floatPrecision\n");
+        printf("Numthreads = number of threads for parallel calculations\n");
+        printf("TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits\n");
+        printf("floatPrecision = 1->float(32-bits), 2->double(64bits)\n\n");
+        printf("NOTE: program does not do input validation (put correct values)\n");
         return -1;
     }
-    
+
     /// set values given as arguments
-    setenv("NTHREADS", argv[1],1);
-    int tracePrecision = atoi (argv[2]);
-    int floatPrecision = atoi (argv[3]);
-    
+    setenv("NTHREADS", argv[1], 1);
+    int tracePrecision = atoi(argv[2]);
+    int floatPrecision = atoi(argv[3]);
+
     // print configuration
-    printf ("---- Configuration ----");
-    printf ("Threads = %s\n", argv[1]);
-    switch (tracePrecision){
+    printf("---- Configuration ----");
+    printf("Threads = %s\n", argv[1]);
+    switch (tracePrecision) {
         case 1:
-            printf ("TracePrecision = 8-bits\n");
+            printf("TracePrecision = 8-bits\n");
             break;
-        case 2: 
-            printf ("TracePrecision = 16-bits\n");
+        case 2:
+            printf("TracePrecision = 16-bits\n");
             break;
         default:
-            printf ("TracePrecision = 32-bits\n");
+            printf("TracePrecision = 32-bits\n");
     }
-    switch (floatPrecision){
+    switch (floatPrecision) {
         case 1:
-            printf ("FloatPrecision = float\n");
+            printf("FloatPrecision = float\n");
             break;
         default:
-            printf ("FloatPrecision = double\n");
+            printf("FloatPrecision = double\n");
     }
 
 
-    AlignMatchSqrTraceSet traceSet = AlignMatchSqrTraceSet(200, 20, 10);
+    TraceSet traceSet = TraceSet();
     Trace *aux;
 
     // open traces file
@@ -121,7 +120,7 @@ int main(int argc, char *argv[]) {
     begin = get_timestamp();
     for (int i = 0; i < NUM_TRACES; i++) {
         Trace *aux;
-        switch (tracePrecision){
+        switch (tracePrecision) {
             case 1:
                 aux = new Trace8(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
                 break;
@@ -131,7 +130,7 @@ int main(int argc, char *argv[]) {
             default:
                 aux = new Trace32(1000, 1.0 / 1024, -83.0 / 1024, TRACE_SIZE);
         }
-    
+
         for (int j = 0; j < TRACE_SIZE; j++) {
             uint16_t value;
             tracesFile >> value;
@@ -152,21 +151,13 @@ int main(int argc, char *argv[]) {
     //    mean->toPng("tracesCHES16mean.png");
     //    variance->toPng("tracesCHES16var.png");
 
-    // align traces
-    printf("align traces\n");
-    begin = get_timestamp();
-    traceSet.preProcess();
-    diff = double(get_timestamp() - begin) / 1000000.;
-    printf("Time -> %f\n", diff);
-    double timeAlign = diff;
-    
     // change traceset to statistical mode
     printf("change traceset to statistical mode\n");
     begin = get_timestamp();
     traceSet.statMode();
     diff = double(get_timestamp() - begin) / 1000000.;
     printf("Time -> %f\n", diff);
-    
+
     // create data set
     InputDataSet dataSet = InputDataSet(DATA_SIZE);
 
@@ -191,8 +182,9 @@ int main(int argc, char *argv[]) {
     double timeIntermediate = 0;
     double timeConsumptionMatrix = 0;
     double timeCorrelation = 0;
-        for (int i = 0; i < 1; i++) {
- //   for (int i = 0; i < KEY_SIZE; i++) {
+
+
+    for (int i = 0; i < KEY_SIZE; i++) {
         // optimize first byte of each input data.
         dataSet.doCacheOptimization(i, 1);
 
@@ -227,8 +219,8 @@ int main(int argc, char *argv[]) {
         // Check memory usage...
         double vm, rss;
         process_mem_usage(vm, rss);
-        printf("VM: %f; RSS: %f; Total: %f\n", vm, rss, vm+rss);
-        
+        printf("VM: %f; RSS: %f; Total: %f\n", vm, rss, vm + rss);
+
         int keyPos, tracePos;
         double valuePos = res->getMaxValue(keyPos, tracePos);
 
@@ -236,15 +228,15 @@ int main(int argc, char *argv[]) {
 
         uint8_t key = *aes.getKeySet()->getElem(keyPos);
         cout << "\032[1;31mkey(" << i << ") = " << (int) key << " corr = " << valuePos << "\032[0m" << endl;
-        
+
         res->toPng("correlation.png");
         delete intermediate;
         delete matrix;
         delete res;
     }
-        
-    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f;\nTimeAlign: %f\n", 
-            timeIntermediate, timeConsumptionMatrix, timeCorrelation, timeAlign);
-    
+
+    printf("Total Intermediate: %f;\nTimeConsumptionMatrix: %f;\nTimeCorrelation: %f;\n",
+            timeIntermediate, timeConsumptionMatrix, timeCorrelation);
+
     return 0;
 }
