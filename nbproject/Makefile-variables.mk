@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=doctorado
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/doctorado
+CND_ARTIFACT_NAME_Debug=doctoradoaux
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/doctoradoaux
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=doctorado.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/doctorado.tar
+CND_PACKAGE_NAME_Debug=doctoradoaux.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/doctoradoaux.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=doctorado
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/doctorado
+CND_ARTIFACT_NAME_Release=doctoradoaux
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/doctoradoaux
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=doctorado.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/doctorado.tar
+CND_PACKAGE_NAME_Release=doctoradoaux.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/doctoradoaux.tar
 #
 # include compiler specific variables
 #
