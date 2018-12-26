@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=DoctoradoAux
+PROJECTNAME=Doctorado
 
 # Active Configuration
 DEFAULTCONF=Debug

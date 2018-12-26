@@ -92,11 +92,13 @@ int main(int argc, char *argv[]) {
     double diff;
 
     /// read arguments
-    if (argc != 4) {
-        printf("Usage: doctorado NumThreds TraceElementPrecision floatPrecision\n");
+    if (argc != 6) {
+        printf("Usage: ramdpa-master NumThreds TraceElementPrecision floatPrecision traceFile\n");
         printf("Numthreads = number of threads for parallel calculations\n");
         printf("TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits\n");
-        printf("floatPrecision = 1->float(32-bits), 2->double(64bits)\n\n");
+        printf("floatPrecision = 1->float(32-bits), 2->double(64bits)\n");
+        printf("traceFile = file with traces in integer text format\n");
+        printf ("dataFile = file with input plaintexts in integer text format\n\n");
         printf("NOTE: program does not do input validation (put correct values)\n");
         return -1;
     }
@@ -132,7 +134,8 @@ int main(int argc, char *argv[]) {
     Trace *aux;
 
     // open traces file
-    ifstream tracesFile("./traces/tracesRawIntPrint.txt");
+    printf ("trace file = %s" ,argv[4]);
+    ifstream tracesFile(argv[4]);
 
     // read traces from file and create traceSet
     printf("read traces from file\n");
@@ -182,7 +185,8 @@ int main(int argc, char *argv[]) {
 
     // read data file
     uint8_t auxData [16]; // aux array to hold data for InputData creation.
-    ifstream dataFile("./traces/data.txt");
+    printf ("plaintext file = %s" ,argv[5]);
+    ifstream dataFile(argv[5]);
     for (int i = 0; i < NUM_TRACES; i++) {
 
         // reading data form file (size 16 bytes).
