@@ -1,5 +1,5 @@
-### Testing the toolbox
-Toolbox is designed for be used and extended by the scientific comunity. To get use to it, the `main.cpp` provided in this repository executes a DPA attack with traces obtained from the CHES2016 contest.
+### Testing the Toolbox
+RamDPA is designed for be used and extended by the scientific comunity. To get use to it, the `main.cpp` provided in this repository executes a DPA attack with traces obtained from the CHES2016 contest.
 
 Follow the steps bellow to get the traces from contest, transform them to RamDPA format and execute the Toolbox.
 
