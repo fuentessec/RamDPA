@@ -22,12 +22,14 @@
 5. By default executable is generated under "dist" folder.
 
 6. Executing the Toolbox. The Toolbox is a command line executable with parameters:
-	Usage: ramdpa-master NumThreds TraceElementPrecision floatPrecision traceFile
-		Numthreads = number of threads for parallel calculations
-		TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits
-		floatPrecision = 1->float(32-bits), 2->double(64bits)
-		traceFile = file with traces in integer text format
-		dataFile = file with input plaintexts in integer text format
 
+```	
+Usage: ramdpa-master NumThreds TraceElementPrecision floatPrecision traceFile
+	Numthreads = number of threads for parallel calculations
+	TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits
+	floatPrecision = 1->float(32-bits), 2->double(64bits)
+	traceFile = file with traces in integer text format
+	dataFile = file with input plaintexts in integer text format
+```
 
-NOTE: traceFile is the path to "tracesRawIntPrint.txt" generated in previous steps and dataFile is the path to "data.txt" generated in previous steps.
+**NOTE: traceFile is the path to "tracesRawIntPrint.txt" generated in previous steps and dataFile is the path to "data.txt" generated in previous steps.**
