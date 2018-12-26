@@ -1,8 +1,8 @@
 #### Obtaining key from CHES2016 traces:
 1. Download contest traces
 	- Go to https://ctf.newae.com/flags/.
-	- Download traces (Trace File) from challenge called "Stagegate #1". Filename is Traces57.7z.
-	- Extract compressed folder generating a folder callded "traces57".
+	- Download traces (Trace File) from challenge called **Stagegate #1**. Filename is `Traces57.7z`.
+	- Extract compressed folder generating a folder callded `traces57`.
 
 2. Transform traces to RAMdpa format.
 	- move file `./traces/transformTraces.py` found in this repository to the trace data folder `traces57/traces_capdir57/knownfixed_rand/knownfixed_rand_P57_data/traces/`.
@@ -25,7 +25,7 @@
 
 ```	
 Usage: ramdpa-master NumThreds TraceElementPrecision floatPrecision traceFile
-	**Numthreads** = number of threads for parallel calculations
+	Numthreads = number of threads for parallel calculations
 	TraceElementPrecision = 1->8-bits, 2->16-bits, 3->32-bits
 	floatPrecision = 1->float(32-bits), 2->double(64bits)
 	traceFile = file with traces in integer text format
