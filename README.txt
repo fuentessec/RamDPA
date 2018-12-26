@@ -1,4 +1,4 @@
-Obtaining key from CHES2016 traces:
+#### Obtaining key from CHES2016 traces:
 1 - Download contest traces
 	- Go to https://ctf.newae.com/flags/.
 	- Download traces (Trace File) from challenge called "Stagegate #1". Filename is Traces57.7z.
@@ -15,7 +15,7 @@ Obtaining key from CHES2016 traces:
 	- tracesRawIntPrint.txt: contains the traces obtained from each encryption process.
 	- key.txt: contains the key used from encription (this is used for checking toolbox output).
 
-Compile and execute the RamDPA:
+#### Compile and execute the RamDPA:
 
 4 - Compile The toolbox. The Toolbox has been developed with Netbeans 8.1 IDE so it recomended to open and compile it with Netbeans. Compilers used are GNU (gcc and g++). The Toolbox has been tested in an Ubuntu distribution.
 
